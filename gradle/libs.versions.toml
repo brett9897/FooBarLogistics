@@ -7,6 +7,8 @@ kotlin = "2.2.20"
 kotlinxDatetime = "0.6.2"
 kotlinxSerializationJSON = "1.8.1"
 kotlinxCoroutines = "1.10.2"
+cucumber = "7.20.1"
+junit = "1.11.3"
 
 [libraries]
 kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -14,9 +16,15 @@ kotlinxDatetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.r
 kotlinxSerialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJSON" }
 kotlinxCoroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
 
+#Cucumber dependencies
+cucumberJava = { module = "io.cucumber:cucumber-java", version.ref = "cucumber" }
+cucumberJunit = { module = "io.cucumber:cucumber-junit-platform-engine", version.ref = "cucumber" }
+junitPlatform = { module = "org.junit.platform:junit-platform-suite", version.ref = "junit" }
+
 # Libraries can be bundled together for easier import
 [bundles]
 kotlinxEcosystem = ["kotlinxDatetime", "kotlinxSerialization", "kotlinxCoroutines"]
+cucumber = ["cucumberJava", "cucumberJunit", "junitPlatform"]
 
 [plugins]
 kotlinPluginSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
