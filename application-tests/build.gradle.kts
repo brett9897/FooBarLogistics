@@ -11,8 +11,12 @@ repositories {
 
 dependencies {
     testImplementation(project(":application"))
+    testImplementation(project(":test-fixtures"))
+    testImplementation(project(":domain:warehouse"))
 
+    testImplementation("io.kotest:kotest-assertions-core:5.8.0")
     testImplementation(libs.bundles.cucumber)
+    testImplementation("io.cucumber:cucumber-picocontainer:7.18.0")
     testImplementation(kotlin("test"))
 }
 

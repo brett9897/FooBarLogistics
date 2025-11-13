@@ -24,6 +24,7 @@
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/domain/warehouse" />
+            <option value="$PROJECT_DIR$/test-fixtures" />
           </set>
         </option>
       </GradleProjectSettings>

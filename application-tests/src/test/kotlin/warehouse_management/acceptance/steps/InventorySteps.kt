@@ -1,19 +1,24 @@
 package warehouse_management.acceptance.steps
 
-import io.cucumber.java.en.Given
 import io.cucumber.java.en.When
 import io.cucumber.java.en.Then
+import io.kotest.matchers.shouldBe
+import warehouse_management.acceptance.support.TestContext
+import java.time.Instant
 
-class InventorySteps {
+class InventorySteps(private val testContext: TestContext) {
     @When("I receive {int} units of product {string}")
     fun receiveProduct(units: Int, productSku: String) {
-        // TODO: Call application use case to receive inventory
-        println("Receiving $units units of $productSku")
+        val now = Instant.now()
+        val warehouseId = testContext.currentWarehouseId ?: "0"
+        testContext.inventoryService.receiveInventory(now, warehouseId, productSku, units)
     }
 
     @Then("the inventory should show {int} units of {string}")
     fun verifyInventory(expectedUnits: Int, productSku: String) {
-        // TODO: Verify inventory level
-        println("Verifying $expectedUnits units of $productSku")
+        val warehouseId = testContext.currentWarehouseId ?: "0"
+        val warehouse = testContext.warehouseRepository.findById(warehouseId) ?: throw AssertionError("Warehouse $warehouseId not found")
+
+        warehouse.getInventoryLevel(productSku) shouldBe expectedUnits
     }
 }

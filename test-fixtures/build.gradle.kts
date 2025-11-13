@@ -2,8 +2,8 @@ plugins {
     kotlin("jvm")
 }
 
-group = "org.example"
-version = "unspecified"
+group = "warehouse-management.test-fixtures"
+version = "0.0.1"
 
 repositories {
     mavenCentral()
@@ -11,7 +11,7 @@ repositories {
 
 dependencies {
     implementation(project(":domain:warehouse"))
-    testImplementation(kotlin("test"))
+    implementation(project(":application"))
 }
 
 tasks.test {

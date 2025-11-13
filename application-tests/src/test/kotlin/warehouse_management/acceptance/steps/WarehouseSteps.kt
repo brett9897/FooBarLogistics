@@ -1,10 +1,16 @@
 package warehouse_management.acceptance.steps
 
+import io.kotest.matchers.shouldBe
 import io.cucumber.java.en.Given
 
-class WarehouseSteps {
+import warehouse_management.acceptance.support.TestContext
+import warehouse_management.domain.warehouse.Warehouse
+
+class WarehouseSteps(private val testContext: TestContext) {
     @Given("warehouse {string} exists")
     fun warehouseExists(warehouseId: String) {
-        println("Setting up warehouse: $warehouseId")
+        val warehouse = Warehouse(warehouseId)
+        testContext.warehouseRepository.save(warehouse)
+        testContext.currentWarehouseId = warehouseId
     }
 }
