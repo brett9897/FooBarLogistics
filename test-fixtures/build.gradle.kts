@@ -2,7 +2,7 @@ plugins {
     kotlin("jvm")
 }
 
-group = "warehouse-management.test-fixtures"
+group = "com.foobarlogistics.test-fixtures"
 version = "0.0.1"
 
 repositories {

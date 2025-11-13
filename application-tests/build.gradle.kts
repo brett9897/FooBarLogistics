@@ -2,7 +2,7 @@ plugins {
     kotlin("jvm")
 }
 
-group = "warehouse-management.application-tests"
+group = "com.foobarlogistics.application-tests"
 version = "0.0.1"
 
 repositories {

@@ -2,7 +2,7 @@ plugins {
     kotlin("jvm")
 }
 
-group = "warehouse_management.domain.warehouse"
+group = "com.foobarlogistics.domain.warehouse"
 version = "0.0.1"
 
 repositories {
