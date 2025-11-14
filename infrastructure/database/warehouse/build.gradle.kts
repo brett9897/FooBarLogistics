@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm")
+    `java-library`
 }
 
 group = "com.foobarlogistics.infrastructure.database.warehouse"
@@ -10,7 +11,10 @@ repositories {
 }
 
 dependencies {
+    implementation(libs.flyway.core)
     testImplementation(kotlin("test"))
+
+    runtimeOnly(libs.flyway.database.postgresql)
 }
 
 tasks.test {

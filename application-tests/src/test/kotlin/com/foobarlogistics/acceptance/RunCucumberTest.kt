@@ -7,6 +7,6 @@ import io.cucumber.core.options.Constants
 @Suite
 @IncludeEngines("cucumber")
 @SelectClasspathResource("features")
-@ConfigurationParameter(key = Constants.GLUE_PROPERTY_NAME, value = "com.FooBarLogistics.acceptance.steps,com.FooBarLogistics.acceptance.support")
+@ConfigurationParameter(key = Constants.GLUE_PROPERTY_NAME, value = "com.foobarlogistics.acceptance.steps,com.foobarlogistics.acceptance.support")
 @ConfigurationParameter(key = Constants.PLUGIN_PROPERTY_NAME, value = "pretty, html:build/reports/cucumber.html")
 class RunCucumberTest
