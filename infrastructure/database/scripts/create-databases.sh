@@ -1,4 +1,4 @@
-﻿#!/bin/bash
+#!/bin/bash
 set -e
 
 # Colors for output
@@ -39,8 +39,9 @@ fi
 
 function test_connection() {
     echo -e "${YELLOW}🔌 Testing PostgreSQL connection...${NC}"
+
     if PGPASSWORD="$DB_PASSWORD" psql -h "$DB_HOST" -p "$DB_PORT" -U "$DB_USER" -d postgres -c "SELECT version();" > /dev/null 2>&1; then
-        echo -e "${GREEN}✅ PostgreSQL connection successful${NC}"
+        echo -e "${GREEN}grad✅ PostgreSQL connection successful${NC}"
         return 0
     else
         echo -e "${RED}❌ Cannot connect to PostgreSQL. Is the server running?${NC}"
