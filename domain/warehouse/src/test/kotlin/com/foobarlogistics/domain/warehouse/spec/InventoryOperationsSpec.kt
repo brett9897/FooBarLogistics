@@ -8,7 +8,7 @@ import java.time.Instant
 class InventoryOperationsSpec : BehaviorSpec({
     
     given("a warehouse") {
-        val warehouse = Warehouse("WH-001")
+        val warehouse = Warehouse(1,"WH-001")
         
         `when`("receiving inventory") {
             val event = InventoryOperations.receiveInventory(
@@ -19,12 +19,12 @@ class InventoryOperationsSpec : BehaviorSpec({
             )
             
             then("should update warehouse state") {
-                event.warehouse.id shouldBe "WH-001"
+                event.warehouse.name shouldBe "WH-001"
                 event.warehouse.getInventoryLevel("SKU-123") shouldBe 100
             }
             
             then("should produce inventory received event") {
-                event.warehouse.id shouldBe "WH-001"
+                event.warehouse.name shouldBe "WH-001"
                 event.productSku shouldBe "SKU-123"
                 event.quantity shouldBe 100
             }

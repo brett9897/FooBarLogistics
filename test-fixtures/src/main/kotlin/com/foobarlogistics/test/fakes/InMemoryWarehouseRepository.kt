@@ -1,17 +1,17 @@
 package com.foobarlogistics.test.fakes
 
+import com.foobarlogistics.application.dto.WarehouseDto
 import com.foobarlogistics.application.ports.output.WarehouseRepository
-import com.foobarlogistics.domain.warehouse.Warehouse
 
 class InMemoryWarehouseRepository : WarehouseRepository {
-    private val warehouses = mutableMapOf<String, Warehouse>()
+    private val warehouses = mutableMapOf<String, WarehouseDto>()
 
-    override fun findById(id: String): Warehouse? {
-        return warehouses[id]
+    override fun findByName(name: String): WarehouseDto? {
+        return warehouses[name]
     }
 
-    override fun save(warehouse: Warehouse) {
-        warehouses[warehouse.id] = warehouse
+    override fun save(warehouse: WarehouseDto) {
+        warehouses[warehouse.name] = warehouse
     }
 
     fun clear() = warehouses.clear()

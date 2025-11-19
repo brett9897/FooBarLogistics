@@ -20,6 +20,8 @@ dependencies {
     implementation(libs.flyway.core)
     implementation(libs.flyway.database.postgresql)
     implementation(libs.exposed.core)
+    implementation(project(":infrastructure:database:common"))
+    implementation(project(":application"))
 
     testImplementation(libs.kotestRunner)
     testImplementation(libs.kotestAssertions)
@@ -68,7 +70,7 @@ tasks.register<FlywayMigrateTask>("flywayMigrate") {
     user.set(envProps.getProperty("POSTGRES_USER", "postgres"))
     password.set(envProps.getProperty("POSTGRES_PASSWORD", "password"))
 
-    migrationLocations.from(layout.projectDirectory.dir("src/main/resources/migrations"))
+    migrationLocations.from(layout.projectDirectory.dir("src/main/resources/db/migrations"))
 }
 
 tasks.register<CreateMigrationTask>("createMigration") {

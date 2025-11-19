@@ -1,14 +1,23 @@
 package com.foobarlogistics.domain.warehouse
 
 data class Warehouse(
-    val id: String,
-    private val inventory: Map<String, Int> = emptyMap()
+    val id: Int,
+    val name: String,
+    private val inventory: Map<String, InventoryItem> = emptyMap()
 ) {
 
     fun receive(productSku: String, units: Int): Warehouse {
-        val newQuantity = inventory.getOrDefault(productSku, 0) + units
-        return copy(inventory = inventory + (productSku to newQuantity))
+        val inventoryItem = inventory.getOrDefault(productSku, InventoryItem.newItem(productSku))
+        return copy(
+            inventory = inventory +
+                    (
+                        productSku to inventoryItem.copy(quantity = inventoryItem.quantity + units)
+                    )
+        )
     }
 
-    fun getInventoryLevel(productSku: String): Int = inventory.getOrDefault(productSku, 0)
+    fun getInventoryLevel(productSku: String): Int =
+        inventory.getOrDefault(productSku, InventoryItem.newItem(productSku)).quantity
+
+    fun getInventory(): List<InventoryItem> = inventory.values.toList()
 }

@@ -1,8 +1,8 @@
 package com.foobarlogistics.application.ports.output
 
-import com.foobarlogistics.domain.warehouse.Warehouse
+import com.foobarlogistics.application.dto.WarehouseDto
 
 interface WarehouseRepository {
-    fun findById(id: String): Warehouse?
-    fun save(warehouse: Warehouse)
+    fun findByName(name: String): WarehouseDto?
+    fun save(warehouse: WarehouseDto)
 }

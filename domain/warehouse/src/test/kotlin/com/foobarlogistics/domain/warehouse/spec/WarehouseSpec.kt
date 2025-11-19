@@ -6,13 +6,13 @@ import com.foobarlogistics.domain.warehouse.Warehouse
 
 class WarehouseSpec : BehaviorSpec({
     given("a warehouse with ID WH-001") {
-        val warehouse = Warehouse("WH-001")
+        val warehouse = Warehouse(1,"WH-001")
 
         `when`("I check its identifier") {
-            val id = warehouse.id
+            val name = warehouse.name
 
             then("it should be WH-001") {
-                id shouldBe "WH-001"
+                name shouldBe "WH-001"
             }
         }
 
@@ -57,7 +57,7 @@ class WarehouseSpec : BehaviorSpec({
     }
 
     given("a warehouse with existing inventory") {
-        val warehouse = Warehouse("WH-002")
+        val warehouse = Warehouse(2,"WH-002")
             .receive("SKU-123", 100)
             .receive("SKU-456", 200)
 
