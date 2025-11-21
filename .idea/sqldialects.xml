@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/infrastructure/database/warehouse/src/main/resources/db/migrations/V20251118223830__add_updated_at_trigger_to_warehouse_and_inventory.sql" dialect="PostgreSQL" />
+  </component>
+</project>

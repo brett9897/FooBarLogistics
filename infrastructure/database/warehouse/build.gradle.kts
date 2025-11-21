@@ -6,6 +6,7 @@ import java.util.Properties
 
 plugins {
     kotlin("jvm")
+    kotlin("plugin.spring") version "1.9.25"
     `java-library`
 }
 
@@ -19,7 +20,8 @@ repositories {
 dependencies {
     implementation(libs.flyway.core)
     implementation(libs.flyway.database.postgresql)
-    implementation(libs.exposed.core)
+    implementation(libs.exposed.spring.starter)
+    implementation(libs.datafaker)
     implementation(project(":infrastructure:database:common"))
     implementation(project(":application"))
 

@@ -3,11 +3,14 @@
 // It is also used for some aspects of project-wide configuration, like managing plugins, dependencies, etc.
 // https://docs.gradle.org/current/userguide/settings_file_basics.html
 
+import org.gradle.api.Project
+
 //pluginManagement {
 //    repositories {
 //        gradlePluginPortal()
 //        mavenCentral()
-//    }
+//    }// yields listOf(
+
 //}
 
 dependencyResolutionManagement {
@@ -23,6 +26,18 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
 }
 
+val envFile = rootProject.projectDir.resolve("infrastructure/database/.env")
+if (envFile.exists()) {
+    envFile.readLines().forEach { line ->
+        // Simple parser to handle KEY=VALUE
+        if (line.isNotBlank() && !line.startsWith("#")) {
+            val (key, value) = line.split("=", limit = 2)
+            // Inject into the System environment for this build run
+            System.setProperty(key.trim(), value.trim())
+        }
+    }
+}
+
 // Include the `app` and `utils` subprojects in the build.
 // If there are changes in only one of the projects, Gradle will rebuild only the one that has changed.
 // Learn more about structuring projects with Gradle - https://docs.gradle.org/8.7/userguide/multi_project_builds.html
@@ -34,3 +49,4 @@ include("application-tests")
 include("test-fixtures")
 include("infrastructure:database:warehouse")
 include("infrastructure:database:common")
+include("frontend.api")
